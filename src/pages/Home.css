@@ -1,0 +1,113 @@
+/* Home.css */
+
+/* Main User Content Styling */
+.main-user-content {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* User Profile Card Styling */
+  .user-profile-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .user-profile-info {
+    padding: 20px;
+  }
+  
+  .user-profile-image {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .user-name {
+    margin: 10px 0;
+    font-size: 26px;
+    color: #333;
+  }
+  
+  .user-position,
+  .user-location,
+  .user-email-phone {
+    margin: 5px 0;
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .social-icons {
+    margin: 15px 0;
+  }
+  
+  .social-icons a {
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+    margin: 0 10px;
+  }
+  
+  .social-icons a:hover {
+    color: #0073e6;
+  }
+  
+  .user-profile-buttons {
+    margin: 20px 0;
+  }
+  
+  .user-profile-buttons button {
+    background-color: #0073e6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .user-profile-buttons button:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
+  }
+  
+  /* User About Me Styling */
+  .user-about-me {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .user-about-me p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .user-about-me p:first-of-type {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  

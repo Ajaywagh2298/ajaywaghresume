@@ -1,0 +1,13 @@
+.resume {
+    margin: 20px;
+  }
+  
+  .resume-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .resume-slide iframe {
+    margin-bottom: 10px;
+  }

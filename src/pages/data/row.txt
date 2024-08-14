@@ -1,0 +1,114 @@
+   <main style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: '20px',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        flexWrap: 'wrap'
+      }}>
+        {/* Left Card */}
+        <Card style={{
+          flex: '1 1 45%',
+          margin: '10px',
+          textAlign: 'center',
+          boxSizing: 'border-box'
+        }}>
+          <CardContent>
+            <Avatar
+              alt="User Icon"
+              src={userData.image}
+              style={{ width: 100, height: 100, margin: '0 auto', border: '2px solid #61dafb', marginTop: 25 }}
+            />
+            <Typography variant="" component="div" style={{ margin: '10px 10px', fontSize: 28, fontFamily: 'Poppins, sans-serif' }}>
+              {userData.name}
+            </Typography>
+            <Typography variant="body2" style={{ color: '#212f3d ', fontSize: 20, fontFamily: 'Poppins, sans-serif' }}>
+              {userData.position}
+            </Typography>
+            <Typography variant="body2" style={{ color: '#a1a1a1', fontSize: 18, fontFamily: 'Poppins, sans-serif' }}>
+              {userData.location}
+            </Typography>
+            <Typography variant="body2" style={{ color: '#a1a1a1', margin: '10px 0', fontSize: 18, fontFamily: 'Poppins, sans-serif' }}>
+              {userData.email} | {userData.phone}
+            </Typography>
+
+            <div style={{ margin: '15px 0' }}>
+              <IconButton component="a" href={userData.github} color="inherit">
+                <GitHubIcon style={{ color: '#212f3d' }} />
+              </IconButton>
+              <IconButton component="a" href={userData.linkedin} color="inherit">
+                <LinkedInIcon style={{ color: '#6495ED' }} />
+              </IconButton>
+              <IconButton component="a" href={userData.instagram} color="inherit">
+                <InstagramIcon style={{ color: '#f1948a' }} />
+              </IconButton>
+              <IconButton component="a" href={userData.locationUrl} color="inherit">
+                < LocationOnIcon style={{ color: '#48c9b0' }} />
+              </IconButton>
+            </div>
+            <div style={{ margin: '20px 0' }}>
+              <Button variant="contained" style={{ backgroundColor: '#61dafb', margin: '0 5px' }}>
+                Resume
+              </Button>
+              <Button variant="contained" style={{ backgroundColor: '#d2b4de', margin: '0 5px' }}>
+                Hire Me
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Right Card */}
+        <Card style={{
+          flex: '1 1 45%',
+          margin: '10px',
+          padding: '20px',
+          boxSizing: 'border-box'
+        }}>
+          <CardContent>
+            <Typography variant="h6" component="div" style={{ marginBottom: '15px' }}>
+              About Me
+            </Typography>
+            <Typography variant="" style={{ lineHeight: 1.6 , fontSize : 18, textAlign: 'center', textJustify:'inter-word'}}>
+            As a Backend Engineer with over two years at Eazy ERP, I specialize in Node.js and excel in delivering high-quality solutions. I hold a Master’s in Computer Application from Vishwakarma Institute of Technology, Pune, and bring a strong foundation in Full Stack development. Passionate about both coding and creative writing, I thrive on innovation and continuous learning. I’m eager to connect and explore new challenges and opportunities together.
+            </Typography>
+          </CardContent>
+        </Card>
+      </main>
+      <Container>
+      <Grid container spacing={4} alignItems="center" style={{ paddingTop: '3rem' }}>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h3" component="h1" gutterBottom>
+            Hello, I'm John Doe
+          </Typography>
+          <Typography variant="h6" color="textSecondary" paragraph>
+            I'm a full-stack developer with a passion for building beautiful and functional web applications.
+          </Typography>
+          <Button variant="contained" color="primary" href="#" style={{ marginRight: '1rem' }}>
+            Experience
+          </Button>
+          <Button variant="outlined" href="#">
+            Education
+          </Button>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Paper elevation={3} style={{ padding: '2rem', textAlign: 'center' }}>
+            <Avatar alt="John Doe" src="/placeholder-user.jpg" style={{ width: 64, height: 64, margin: 'auto' }} />
+            <Typography variant="h6" component="h3">
+              John Doe
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+              Full-stack Developer, San Francisco
+            </Typography>
+            <Typography variant="body2" color="textSecondary" style={{ marginTop: '1rem' }}>
+              john@example.com
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+              +1 (123) 456-7890
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+              johndoe
+            </Typography>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
