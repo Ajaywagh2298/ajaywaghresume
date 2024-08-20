@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Card, CardContent, Typography, Avatar, Box, Grid, Container, Link, LinearProgress, CircularProgress } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -46,10 +46,10 @@ function Home() {
   const handleClick = () => {
     setLoading(true);
     setTimeout(() => {
-        // Simulate a delay for loading
-        navigate('/resume');
+      // Simulate a delay for loading
+      navigate('/resume');
     }, 400); // Adjust the delay as needed
-}
+  }
   return (
     <ThemeProvider theme={theme}>
       <Box py={{ xs: 14, md: 16, lg: 14, background: '#fdfefe' }} component="section">
@@ -81,22 +81,22 @@ function Home() {
               </Typography>
               <Box textAlign="center">
                 <Link href="#" underline="none">
-                <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                    height: 40,
-                    px: 8,
-                    textTransform: 'none',
-                    fontWeight: 'medium',
-                    boxShadow: 3,
-                    ':hover': { backgroundColor: 'primary.main' },
-                }}
-                onClick={handleClick}
-            >
-                Download Resume
-            </Button>
-            <LoadingPopup open={loading} onClose={() => setLoading(false)} />
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{
+                      height: 40,
+                      px: 8,
+                      textTransform: 'none',
+                      fontWeight: 'medium',
+                      boxShadow: 3,
+                      ':hover': { backgroundColor: 'primary.main' },
+                    }}
+                    onClick={handleClick}
+                  >
+                    Download Resume
+                  </Button>
+                  <LoadingPopup open={loading} onClose={() => setLoading(false)} />
                 </Link>
               </Box>
             </Grid>
@@ -105,63 +105,52 @@ function Home() {
       </Box>
       <Box py={{ lg: 6 }} component="section" sx={{ background: "#fdfefe" }}>
         <Box
-          display="flex"
-          flexDirection="row" // Horizontal layout
-          justifyContent="center"
-          alignItems="center"
-          gap={8} // Adjust spacing between items
-          mt={4} // Adjust top margin for spacing from other elements
-          mb={4} // Adjust bottom margin for spacing from other elements
-          p={2} // Add padding inside the container
-          background="#fdfefe"
-
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' }, // Column layout on mobile, row on larger screens
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: { xs: 4, md: 8 }, // Adjust spacing between items for different screen sizes
+            mt: 4, // Adjust top margin
+            mb: 4, // Adjust bottom margin
+            p: 2, // Add padding inside the container
+            background: '#fdfefe',
+          }}
         >
-          <Box>
-            <Typography
-              variant="smallBody"
-              color="text.primary"
-              fontWeight="bold"
-            >
-              {userData.email}
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-            >
-              Email
-            </Typography>
-          </Box>
-          <Box>
-            <Typography
-              variant="smallBody"
-              color="text.primary"
-              fontWeight="bold"
-            >
-              {userData.phone}
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-            >
-              Phone
-            </Typography>
-          </Box>
-          <Box>
-            <Typography
-              variant="smallBody"
-              color="text.primary"
-              fontWeight="bold"
-            >
-              {userData.location}
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-            >
-              Location
-            </Typography>
-          </Box>
+          <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
+            <Grid item xs={6} sm={4} md="auto">
+              <Box textAlign="center">
+                <Typography variant="smallBody" color="text.primary" fontWeight="bold">
+                  {userData.email}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Email
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={6} sm={4} md="auto">
+              <Box textAlign="center">
+                <Typography variant="smallBody" color="text.primary" fontWeight="bold">
+                  {userData.phone}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Phone
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={6} sm={4} md="auto">
+              <Box textAlign="center">
+                <Typography variant="smallBody" color="text.primary" fontWeight="bold">
+                  {userData.location}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Location
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
         </Box>
+
         <Box
           display="flex"
           justifyContent="center"
@@ -342,11 +331,21 @@ function Home() {
           alignItems="center"
           gap={6} // Adjust gap for spacing between buttons
           mt={1}
+          sx={{
+            flexWrap: 'wrap', // Enable wrapping of items
+          }}
         >
           {experienceData.length > 0 ? (
-            experienceData.map((data) => (
+            experienceData.map((data, index) => (
               <Card
+                key={index}
                 sx={{
+                  width: {
+                    xs: '100%', // Full width on extra-small screens
+                    sm: '45%', // 2 columns on small screens
+                    md: '30%', // 3 columns on medium screens
+                    lg: '22%', // More columns on large screens
+                  },
                   minWidth: 220,
                   minHeight: 100,
                   justifyContent: 'center',
@@ -362,6 +361,11 @@ function Home() {
                     transform: 'scale(1.05)', // Slightly scale up the card
                     cursor: 'pointer',
                   },
+                  marginBottom: {
+                    xs: 2, // Add space between rows on mobile
+                    sm: 3, // Adjust spacing for small screens
+                    md: 4, // Adjust spacing for medium screens
+                  },
                 }}
               >
                 <CardContent
@@ -373,14 +377,16 @@ function Home() {
                     margin: 0,
                   }}
                 >
-                  <Avatar alt="Jane Doe"
+                  <Avatar
+                    alt={data.companyName}
                     src={data.companyLogo}
                     sx={{
                       width: 60,
                       height: 60,
                       mx: 'auto',
                       borderRadius: '50%',
-                    }} > </Avatar>
+                    }}
+                  />
                   <Typography sx={{ fontSize: 14, color: '#212f3d', mt: 1, fontWeight: 'bold' }}>
                     {data.companyName}
                   </Typography>
@@ -396,6 +402,7 @@ function Home() {
             </Typography>
           )}
         </Box>
+
         {/* ------------------------------------------------------ */}
       </Box>
       <SkillsList skillsData={skillsData} />
@@ -475,7 +482,7 @@ const SkillsList = ({ skillsData }) => {
         flexDirection: 'column',
         py: { xs: 6, md: 4 },
         background: '#fdfefe',
-        pd: 5
+        pd: 5,
       }}
     >
       <Box sx={{ mb: 8, textAlign: 'center' }}>
@@ -489,7 +496,12 @@ const SkillsList = ({ skillsData }) => {
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(8, 1fr)',
+          gridTemplateColumns: {
+            xs: 'repeat(2, 1fr)', // 2 columns on mobile
+            sm: 'repeat(3, 1fr)', // 3 columns on small screens
+            md: 'repeat(4, 1fr)', // 4 columns on medium screens
+            lg: 'repeat(8, 1fr)', // 8 columns on large screens
+          },
           gap: 6,
           justifyContent: 'center',
           alignItems: 'center',
@@ -552,6 +564,7 @@ const SkillsList = ({ skillsData }) => {
         )}
       </Box>
     </Box>
+
   );
 };
 

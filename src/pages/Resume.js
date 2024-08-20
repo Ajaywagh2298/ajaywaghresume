@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography, Link, Card, CardContent, CardActions, Box, Divider } from '@mui/material';
-import { resumeList } from '../data'; // Adjust the import path if needed
-import { createFilterOptions } from '@mui/material/Autocomplete'; // Verify if this is the correct path
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography, Card, CardContent, CardActions, Box, Divider } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-
+import { resumeList } from '../data'; // Adjust the import path if needed
 
 const theme = createTheme({
   palette: {
@@ -12,21 +10,20 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: 'Poppins, sans-serif',
-    h5: {
-      fontSize: 28,
+    h4: {
+      fontSize: '2rem',
+    },
+    h6: {
+      fontSize: '1.25rem',
     },
     body1: {
-      fontSize: 20,
+      fontSize: '1rem',
     },
     body2: {
-      fontSize: 18,
-    },
-    smallBody: {
-      fontSize: 18,
-      fontFamily: 'Josefin Slab, serif',
+      fontSize: '0.875rem',
     },
     iconText: {
-      fontSize: 14
+      fontSize: '0.875rem',
     }
   }
 });
@@ -59,7 +56,7 @@ const Resume = () => {
   return (
     <ThemeProvider theme={theme}>
       <Box
-        sx={{ p: 15, pb: 20, textAlign: 'center', background: '#fdfefe', maxHeight: '100%' }}
+        sx={{ p: 4, pb: 6, textAlign: 'center', background: '#fdfefe' }}
       >
         <Typography variant="h4" gutterBottom sx={{ pb: 2 }}>
           Resume
@@ -67,26 +64,21 @@ const Resume = () => {
         <Typography variant="body1" color="textSecondary" sx={{ pb: 5 }}>
           <Divider />
         </Typography>
-        <div
-          className="resume-container"
-          style={{
+        <Box
+          sx={{
             display: 'flex',
             flexDirection: 'row',
+            flexWrap: 'wrap',
             justifyContent: 'center',
-            alignItems: 'center',
-            gap: '18px', 
-            marginBottom: '16px',
-            padding: '16px',
-            background: '#fdfefe',
-            flexWrap: 'wrap', 
+            gap: 2, // Adjusted spacing
+            marginBottom: 2, // Adjusted bottom margin
           }}
         >
-
           {resumeList.length > 0 ? (
             resumeList.map((data) => (
               <Card
                 key={data.position}
-                style={{ width: '300px', marginBottom: '16px' }} // Adjust the width and margin as needed
+                sx={{ width: { xs: '100%', sm: '300px' }, mb: 2 }} // Responsive width
                 onClick={() => handleOpen(data)}
               >
                 <CardContent>
@@ -101,7 +93,7 @@ const Resume = () => {
                   <Button size="small" color="primary" onClick={() => handleOpen(data)}>
                     View Resume
                   </Button>
-                  <Button size="small" color="secondary" onClick={() => handleDownload(data.link, data.name)} sx={{ alignItems : 'right'}}>
+                  <Button size="small" color="secondary" onClick={() => handleDownload()} sx={{ ml: 'auto' }}>
                     Download
                   </Button>
                 </CardActions>
@@ -110,7 +102,6 @@ const Resume = () => {
           ) : (
             <Typography>No resumes available.</Typography>
           )}
-
           {currentResume && (
             <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
               <DialogTitle>Resume: {currentResume.position}</DialogTitle>
@@ -132,11 +123,10 @@ const Resume = () => {
               </DialogActions>
             </Dialog>
           )}
-        </div>
+        </Box>
       </Box>
     </ThemeProvider>
   );
 };
 
 export default Resume;
-
