@@ -151,165 +151,7 @@ function Home() {
           </Grid>
         </Box>
 
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          gap={6} // Adjust gap for spacing between buttons
-          mt={1}
-        >
-          <Card
-            sx={{
-              minWidth: 100,
-              minHeight: 100,
-              justifyContent: 'center',
-              alignItems: 'center',
-              textAlign: 'center',
-              background: '#fdfefe',
-              boxShadow: 3,
-              borderRadius: 2,
-              paddingTop: 2,
-              transition: 'transform 0.3s ease-in-out', // Smooth transition for scaling
-              '&:hover': {
-                boxShadow: 6, // Increases shadow on hover
-                transform: 'scale(1.05)', // Slightly scale up the card
-                cursor: 'pointer',
-              },
-            }}
-            component="a"
-            href={userData.linkedin}
-            target="_blank"
-          >
-            <CardContent
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                padding: 1,
-                margin: 0,
-              }}
-            >
-              <LinkedInIcon sx={{ fontSize: 40, color: '#3498db' }} />
-              <Typography sx={{ fontSize: 12, color: '#212f3d', mt: 1 }}>
-                LinkedIn
-              </Typography>
-            </CardContent>
-          </Card>
-
-          <Card
-            sx={{
-              minWidth: 100,
-              minHeight: 100,
-              justifyContent: 'center',
-              alignItems: 'center',
-              textAlign: 'center',
-              background: '#fdfefe',
-              boxShadow: 3,
-              borderRadius: 2,
-              paddingTop: 2,
-              transition: 'transform 0.3s ease-in-out', // Smooth transition for scaling
-              '&:hover': {
-                boxShadow: 6, // Increases shadow on hover
-                transform: 'scale(1.05)', // Slightly scale up the card
-                cursor: 'pointer',
-              },
-            }}
-            component="a"
-            href={userData.github}
-            target="_blank"
-          >
-            <CardContent
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                padding: 1,
-                margin: 0,
-              }}
-            >
-              <GitHubIcon sx={{ fontSize: 40, color: '#566573' }} />
-              <Typography sx={{ fontSize: 12, color: '#212f3d', mt: 1 }}>
-                GitHub
-              </Typography>
-            </CardContent>
-          </Card>
-
-          <Card
-            sx={{
-              minWidth: 100,
-              minHeight: 100,
-              justifyContent: 'center',
-              alignItems: 'center',
-              textAlign: 'center',
-              background: '#fdfefe',
-              boxShadow: 3,
-              borderRadius: 2,
-              paddingTop: 2,
-              transition: 'transform 0.3s ease-in-out', // Smooth transition for scaling
-              '&:hover': {
-                boxShadow: 6, // Increases shadow on hover
-                transform: 'scale(1.05)', // Slightly scale up the card
-                cursor: 'pointer',
-              },
-            }}
-            component="a"
-            href={userData.instagram}
-            target="_blank"
-          >
-            <CardContent
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                padding: 1,
-                margin: 0,
-              }}
-            >
-              <InstagramIcon sx={{ fontSize: 40, color: '#e74c3c' }} />
-              <Typography sx={{ fontSize: 12, color: '#212f3d', mt: 1 }}>
-                Instagram
-              </Typography>
-            </CardContent>
-          </Card>
-
-          <Card
-            sx={{
-              minWidth: 100,
-              minHeight: 100,
-              justifyContent: 'center',
-              alignItems: 'center',
-              textAlign: 'center',
-              background: '#fdfefe',
-              boxShadow: 3,
-              borderRadius: 2,
-              paddingTop: 2,
-              transition: 'transform 0.3s ease-in-out', // Smooth transition for scaling
-              '&:hover': {
-                boxShadow: 6, // Increases shadow on hover
-                transform: 'scale(1.05)', // Slightly scale up the card
-                cursor: 'pointer',
-              },
-            }}
-            component="a"
-            href={userData.locationUrl}
-            target="_blank"
-          >
-            <CardContent
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                padding: 1,
-                margin: 0,
-              }}
-            >
-              <LocationOnIcon sx={{ fontSize: 40, color: '#1abc9c' }} />
-              <Typography sx={{ fontSize: 12, color: '#212f3d', mt: 1 }}>
-                Location
-              </Typography>
-            </CardContent>
-          </Card>
-        </Box>
+        <SocialMediaCards userData={userData} />
       </Box>
       <Box
         sx={{ py: 8, display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#fdfefe' }}
@@ -326,82 +168,84 @@ function Home() {
         </Box>
         {/* --------------------------------------------------------- */}
         <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          gap={6} // Adjust gap for spacing between buttons
-          mt={1}
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    gap={6}
+    mt={1}
+    sx={{
+      flexWrap: 'wrap',
+      padding: 2, // Add padding to prevent items from touching the edges
+    }}
+  >
+    {experienceData.length > 0 ? (
+      experienceData.map((data, index) => (
+        <Card
+          key={index}
           sx={{
-            flexWrap: 'wrap', // Enable wrapping of items
+            width: {
+              xs: '100%', // Full width on extra-small screens
+              sm: '45%',  // 2 columns on small screens
+              md: '30%',  // 3 columns on medium screens
+              lg: '22%',  // More columns on large screens
+            },
+            minWidth: 220,
+            minHeight: 100,
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            background: '#fdfefe',
+            boxShadow: 3,
+            borderRadius: 2,
+            paddingTop: 2,
+            transition: 'transform 0.3s ease-in-out',
+            '&:hover': {
+              boxShadow: 6,
+              transform: 'scale(1.05)',
+              cursor: 'pointer',
+            },
+            marginBottom: {
+              xs: 2, // Space between rows on mobile
+              sm: 3, // Spacing for small screens
+              md: 4, // Spacing for medium screens
+            },
           }}
         >
-          {experienceData.length > 0 ? (
-            experienceData.map((data, index) => (
-              <Card
-                key={index}
-                sx={{
-                  width: {
-                    xs: '100%', // Full width on extra-small screens
-                    sm: '45%', // 2 columns on small screens
-                    md: '30%', // 3 columns on medium screens
-                    lg: '22%', // More columns on large screens
-                  },
-                  minWidth: 220,
-                  minHeight: 100,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                  background: '#fdfefe',
-                  boxShadow: 3,
-                  borderRadius: 2,
-                  paddingTop: 2,
-                  transition: 'transform 0.3s ease-in-out', // Smooth transition for scaling
-                  '&:hover': {
-                    boxShadow: 6, // Increases shadow on hover
-                    transform: 'scale(1.05)', // Slightly scale up the card
-                    cursor: 'pointer',
-                  },
-                  marginBottom: {
-                    xs: 2, // Add space between rows on mobile
-                    sm: 3, // Adjust spacing for small screens
-                    md: 4, // Adjust spacing for medium screens
-                  },
-                }}
-              >
-                <CardContent
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    padding: 1,
-                    margin: 0,
-                  }}
-                >
-                  <Avatar
-                    alt={data.companyName}
-                    src={data.companyLogo}
-                    sx={{
-                      width: 60,
-                      height: 60,
-                      mx: 'auto',
-                      borderRadius: '50%',
-                    }}
-                  />
-                  <Typography sx={{ fontSize: 14, color: '#212f3d', mt: 1, fontWeight: 'bold' }}>
-                    {data.companyName}
-                  </Typography>
-                  <Typography sx={{ fontSize: 12, color: '#212f3d', mt: 1 }}>
-                    {data.designation}
-                  </Typography>
-                </CardContent>
-              </Card>
-            ))
-          ) : (
-            <Typography variant="body2" color="textSecondary">
-              No experience data available.
+          <CardContent
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: 1,
+              margin: 0,
+            }}
+          >
+            <Avatar
+              alt={data.companyName}
+              src={data.companyLogo}
+              sx={{
+                width: 60,
+                height: 60,
+                mx: 'auto',
+                borderRadius: '50%',
+                mb: 1, // Margin-bottom for spacing between avatar and text
+              }}
+            />
+            <Typography sx={{ fontSize: 14, color: '#212f3d', fontWeight: 'bold' }}>
+              {data.companyName}
             </Typography>
-          )}
-        </Box>
+            <Typography sx={{ fontSize: 12, color: '#212f3d', mt: 0.5 }}>
+              {data.designation}
+            </Typography>
+          </CardContent>
+        </Card>
+      ))
+    ) : (
+      <Typography variant="body2" color="textSecondary">
+        No experience data available.
+      </Typography>
+    )}
+  </Box>
 
         {/* ------------------------------------------------------ */}
       </Box>
@@ -421,42 +265,44 @@ function Home() {
           Education
         </Typography>
         <Grid container spacing={4} justifyContent="center" sx={{ mt: 4 }}>
-          <Grid item xs={12} sm={8} md={6}>
-            {educationData.length > 0 ? (educationData.map((data) => (
-              <Card sx={{ p: 1, boxShadow: 3, mb: 4 }}>
-                <CardContent>
-                  <Box display="flex" alignItems="center" gap={2}>
-                    <Avatar
-                      src={data.imageURL}
-                      alt={data.institution}
-                      sx={{ width: 48, height: 48, objectFit: 'cover' }}
-                    />
-                    <Box>
-                      <Typography variant="h6" fontWeight="bold">
-                        {data.degree}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                        {data.institution}
-                      </Typography>
-                    </Box>
-                  </Box>
-                  <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
-                    <Typography variant="body2" color="textSecondary">
-                      {data.period}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      {data.total} Years
-                    </Typography>
-                  </Box>
-                </CardContent>
-              </Card>
-            ))) : (
-              <Typography variant="body2" color="textSecondary">
-                No experience data available.
-              </Typography>
-            )}
-          </Grid>
-        </Grid>
+    <Grid item xs={12} sm={10} md={8}>
+      {educationData.length > 0 ? (
+        educationData.map((data, index) => (
+          <Card key={index} sx={{ p: 2, boxShadow: 3, mb: 4 }}>
+            <CardContent>
+              <Box display="flex" alignItems="center" gap={2}>
+                <Avatar
+                  src={data.imageURL}
+                  alt={data.institution}
+                  sx={{ width: 48, height: 48, objectFit: 'cover' }}
+                />
+                <Box>
+                  <Typography variant="h6" fontWeight="bold" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
+                    {data.degree}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
+                    {data.institution}
+                  </Typography>
+                </Box>
+              </Box>
+              <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
+                <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
+                  {data.period}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
+                  {data.total} Years
+                </Typography>
+              </Box>
+            </CardContent>
+          </Card>
+        ))
+      ) : (
+        <Typography variant="body2" color="textSecondary">
+          No education data available.
+        </Typography>
+      )}
+    </Grid>
+  </Grid>
       </Box>
     </ThemeProvider>
   );
@@ -567,5 +413,84 @@ const SkillsList = ({ skillsData }) => {
 
   );
 };
+
+const SocialMediaCards = ({ userData }) => (
+  <Box
+    display="flex"
+    flexDirection="row"
+    flexWrap="wrap" // Allows cards to wrap to the next line on small screens
+    justifyContent="center"
+    alignItems="center"
+    gap={6}
+    mt={1}
+    sx={{
+      '@media (max-width: 600px)': {
+        gap: 2, // Reduce gap on small screens
+      },
+    }}
+  >
+    {[{
+      icon: <LinkedInIcon sx={{ fontSize: 40, color: '#3498db' }} />,
+      label: 'LinkedIn',
+      href: userData.linkedin,
+    }, {
+      icon: <GitHubIcon sx={{ fontSize: 40, color: '#566573' }} />,
+      label: 'GitHub',
+      href: userData.github,
+    }, {
+      icon: <InstagramIcon sx={{ fontSize: 40, color: '#e74c3c' }} />,
+      label: 'Instagram',
+      href: userData.instagram,
+    }, {
+      icon: <LocationOnIcon sx={{ fontSize: 40, color: '#1abc9c' }} />,
+      label: 'Location',
+      href: userData.locationUrl,
+    }].map((card, index) => (
+      <Card
+        key={index}
+        sx={{
+          minWidth: 100,
+          minHeight: 100,
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+          background: '#fdfefe',
+          boxShadow: 3,
+          borderRadius: 2,
+          paddingTop: 2,
+          transition: 'transform 0.3s ease-in-out',
+          '&:hover': {
+            boxShadow: 6,
+            transform: 'scale(1.05)',
+            cursor: 'pointer',
+          },
+          '@media (max-width: 600px)': {
+            minWidth: 80, // Adjust size for small screens
+            minHeight: 80,
+            paddingTop: 1,
+          },
+        }}
+        component="a"
+        href={card.href}
+        target="_blank"
+      >
+        <CardContent
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: 1,
+            margin: 0,
+          }}
+        >
+          {card.icon}
+          <Typography sx={{ fontSize: 12, color: '#212f3d', mt: 1 }}>
+            {card.label}
+          </Typography>
+        </CardContent>
+      </Card>
+    ))}
+  </Box>
+);
 
 export default Home;
