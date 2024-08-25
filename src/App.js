@@ -10,6 +10,7 @@ import Admin from './pages/Admin';
 import './App.css';
 import ExperienceList from './pages/Experience';
 import Footer from './components/footer';
+import ImageGallery from './pages/ImagesShower';
 
 const theme = createTheme({
   palette: {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/exp" element={<ExperienceList />} />
+          <Route path="/images" element={<ImageGallery />} />
         </Routes>
         <Footer />
       </Router>

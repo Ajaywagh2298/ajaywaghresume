@@ -66,6 +66,9 @@ const Navbar = () => {
               <ListItem component={Link} to="/resume" button>
                 <ListItemText primary="Resume" sx={{color: '#000'}} />
               </ListItem>
+              <ListItem component={Link} to="/images" button>
+                <ListItemText primary="Image Gallery" sx={{color: '#000',width: 105}} />
+              </ListItem>
               <ListItem component={Link} to="/contact"  button>
                 <ListItemText primary="Contact Us" sx={{color: '#000',width: 90}} />
               </ListItem>
@@ -102,6 +105,9 @@ const Navbar = () => {
           </ListItem>
           <ListItem button component={Link} to="/resume" onClick={handleDrawerToggle}>
             <ListItemText primary="Resume" />
+          </ListItem>
+          <ListItem button component={Link} to="/images" onClick={handleDrawerToggle}>
+            <ListItemText primary="Image Gallery" />
           </ListItem>
           <ListItem button component={Link} to="/contact" onClick={handleDrawerToggle}>
             <ListItemText primary="Contact Us" />

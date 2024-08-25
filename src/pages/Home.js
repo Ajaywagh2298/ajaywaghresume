@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import { Button, Card, CardContent, Typography, Avatar, Box, Grid, Container, Link, LinearProgress, CircularProgress } from '@mui/material';
+import { Button, Card, CardContent, Typography, Avatar, Box, Grid, Container, Link, CardHeader, Breadcrumbs, Chip, IconButton } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import { emphasize, styled } from '@mui/material/styles';
 import CodeIcon from '@mui/icons-material/Code';
+import PublicIcon from '@mui/icons-material/Public';
 import { useNavigate } from 'react-router-dom';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkIcon from '@mui/icons-material/Work';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LoadingPopup from './LoadingPopup';
-import { userData, experienceData, educationData, skillsData } from '../data';
+import { userData, experienceData, educationData, skillsData, certificationsData, achievementsData, imagesList } from '../data';
 
 const theme = createTheme({
   palette: {
@@ -38,11 +44,39 @@ const theme = createTheme({
   }
 });
 
+const StyledBreadcrumb = styled(Chip)(({ theme }) => {
+  const backgroundColor =
+    theme.palette.mode === 'light'
+      ? theme.palette.grey[100]
+      : theme.palette.grey[800];
+  return {
+    backgroundColor,
+    height: theme.spacing(3),
+    color: theme.palette.text.primary,
+    fontWeight: theme.typography.fontWeightRegular,
+    '&:hover, &:focus': {
+      backgroundColor: emphasize(backgroundColor, 0.06),
+    },
+    '&:active': {
+      boxShadow: theme.shadows[1],
+      backgroundColor: emphasize(backgroundColor, 0.12),
+    },
+  };
+});
+
 function Home() {
 
   const [loading, setLoading] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const navigate = useNavigate();
 
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imagesList.length)
+  }
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + imagesList.length) % imagesList.length)
+  }
   const handleClick = () => {
     setLoading(true);
     setTimeout(() => {
@@ -50,6 +84,7 @@ function Home() {
       navigate('/resume');
     }, 400); // Adjust the delay as needed
   }
+
   return (
     <ThemeProvider theme={theme}>
       <Box py={{ xs: 14, md: 16, lg: 14, background: '#fdfefe' }} component="section">
@@ -168,84 +203,84 @@ function Home() {
         </Box>
         {/* --------------------------------------------------------- */}
         <Box
-    display="flex"
-    justifyContent="center"
-    alignItems="center"
-    gap={6}
-    mt={1}
-    sx={{
-      flexWrap: 'wrap',
-      padding: 2, // Add padding to prevent items from touching the edges
-    }}
-  >
-    {experienceData.length > 0 ? (
-      experienceData.map((data, index) => (
-        <Card
-          key={index}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          gap={6}
+          mt={1}
           sx={{
-            width: {
-              xs: '100%', // Full width on extra-small screens
-              sm: '45%',  // 2 columns on small screens
-              md: '30%',  // 3 columns on medium screens
-              lg: '22%',  // More columns on large screens
-            },
-            minWidth: 220,
-            minHeight: 100,
-            justifyContent: 'center',
-            alignItems: 'center',
-            textAlign: 'center',
-            background: '#fdfefe',
-            boxShadow: 3,
-            borderRadius: 2,
-            paddingTop: 2,
-            transition: 'transform 0.3s ease-in-out',
-            '&:hover': {
-              boxShadow: 6,
-              transform: 'scale(1.05)',
-              cursor: 'pointer',
-            },
-            marginBottom: {
-              xs: 2, // Space between rows on mobile
-              sm: 3, // Spacing for small screens
-              md: 4, // Spacing for medium screens
-            },
+            flexWrap: 'wrap',
+            padding: 2, // Add padding to prevent items from touching the edges
           }}
         >
-          <CardContent
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              padding: 1,
-              margin: 0,
-            }}
-          >
-            <Avatar
-              alt={data.companyName}
-              src={data.companyLogo}
-              sx={{
-                width: 60,
-                height: 60,
-                mx: 'auto',
-                borderRadius: '50%',
-                mb: 1, // Margin-bottom for spacing between avatar and text
-              }}
-            />
-            <Typography sx={{ fontSize: 14, color: '#212f3d', fontWeight: 'bold' }}>
-              {data.companyName}
+          {experienceData.length > 0 ? (
+            experienceData.map((data, index) => (
+              <Card
+                key={index}
+                sx={{
+                  width: {
+                    xs: '100%', // Full width on extra-small screens
+                    sm: '45%',  // 2 columns on small screens
+                    md: '30%',  // 3 columns on medium screens
+                    lg: '22%',  // More columns on large screens
+                  },
+                  minWidth: 220,
+                  minHeight: 100,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  background: '#fdfefe',
+                  boxShadow: 3,
+                  borderRadius: 2,
+                  paddingTop: 2,
+                  transition: 'transform 0.3s ease-in-out',
+                  '&:hover': {
+                    boxShadow: 6,
+                    transform: 'scale(1.05)',
+                    cursor: 'pointer',
+                  },
+                  marginBottom: {
+                    xs: 2, // Space between rows on mobile
+                    sm: 3, // Spacing for small screens
+                    md: 4, // Spacing for medium screens
+                  },
+                }}
+              >
+                <CardContent
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    padding: 1,
+                    margin: 0,
+                  }}
+                >
+                  <Avatar
+                    alt={data.companyName}
+                    src={data.companyLogo}
+                    sx={{
+                      width: 60,
+                      height: 60,
+                      mx: 'auto',
+                      borderRadius: '50%',
+                      mb: 1, // Margin-bottom for spacing between avatar and text
+                    }}
+                  />
+                  <Typography sx={{ fontSize: 14, color: '#212f3d', fontWeight: 'bold' }}>
+                    {data.companyName}
+                  </Typography>
+                  <Typography sx={{ fontSize: 12, color: '#212f3d', mt: 0.5 }}>
+                    {data.designation}
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))
+          ) : (
+            <Typography variant="body2" color="textSecondary">
+              No experience data available.
             </Typography>
-            <Typography sx={{ fontSize: 12, color: '#212f3d', mt: 0.5 }}>
-              {data.designation}
-            </Typography>
-          </CardContent>
-        </Card>
-      ))
-    ) : (
-      <Typography variant="body2" color="textSecondary">
-        No experience data available.
-      </Typography>
-    )}
-  </Box>
+          )}
+        </Box>
 
         {/* ------------------------------------------------------ */}
       </Box>
@@ -265,44 +300,198 @@ function Home() {
           Education
         </Typography>
         <Grid container spacing={4} justifyContent="center" sx={{ mt: 4 }}>
-    <Grid item xs={12} sm={10} md={8}>
-      {educationData.length > 0 ? (
-        educationData.map((data, index) => (
-          <Card key={index} sx={{ p: 2, boxShadow: 3, mb: 4 }}>
-            <CardContent>
-              <Box display="flex" alignItems="center" gap={2}>
-                <Avatar
-                  src={data.imageURL}
-                  alt={data.institution}
-                  sx={{ width: 48, height: 48, objectFit: 'cover' }}
-                />
-                <Box>
-                  <Typography variant="h6" fontWeight="bold" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
-                    {data.degree}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
-                    {data.institution}
-                  </Typography>
-                </Box>
-              </Box>
-              <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
-                <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
-                  {data.period}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
-                  {data.total} Years
-                </Typography>
-              </Box>
-            </CardContent>
-          </Card>
-        ))
-      ) : (
-        <Typography variant="body2" color="textSecondary">
-          No education data available.
+          <Grid item xs={12} sm={10} md={8}>
+            {educationData.length > 0 ? (
+              educationData.map((data, index) => (
+                <Card key={index} sx={{ p: 2, boxShadow: 3, mb: 4 }}>
+                  <CardContent>
+                    <Box display="flex" alignItems="center" gap={2}>
+                      <Avatar
+                        src={data.imageURL}
+                        alt={data.institution}
+                        sx={{ width: 48, height: 48, objectFit: 'cover' }}
+                      />
+                      <Box>
+                        <Typography variant="h6" fontWeight="bold" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
+                          {data.degree}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
+                          {data.institution}
+                        </Typography>
+                      </Box>
+                    </Box>
+                    <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
+                      <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
+                        {data.period}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
+                        {data.total} Years
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                </Card>
+              ))
+            ) : (
+              <Typography variant="body2" color="textSecondary">
+                No education data available.
+              </Typography>
+            )}
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box
+        id="education"
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+          minHeight: '25vh',
+          background: '#fdfefe',
+          padding: '30px',
+        }}
+      >
+        <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
+          Certification
         </Typography>
-      )}
-    </Grid>
-  </Grid>
+        <Grid container spacing={2} justifyContent="center" sx={{ mt: 4 }}>
+          {certificationsData.length > 0 ? (
+            certificationsData.map((cert, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Card
+                  sx={{
+                    transition: 'box-shadow 0.3s',
+                    '&:hover': {
+                      boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+                    },
+                    padding: 0.5,
+                  }}
+                >
+                  <CardHeader
+                    avatar={
+                      <Avatar
+                        src={cert.companyLogo}
+                        alt={`${cert.companyName} logo`}
+                        sx={{ width: 50, height: 50 }}
+                      />
+                    }
+                    title={
+                      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                        <Typography variant="body" sx={{ fontWeight: 'bold', fontSize: 14 }}>
+                          {cert.title}
+                        </Typography>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            width: '100%',
+                          }}
+                        >
+                          <Typography color="#2c3e50" sx={{ fontSize: 12 }}>
+                            {cert.companyName}
+                          </Typography>
+                          <Typography sx={{ fontSize: 10, display: 'flex', alignItems: 'center', color: '#2c3e50' }}>
+                            {
+                              cert.date ? (< > <CalendarTodayIcon fontSize="small" sx={{ marginRight: 0.5 }} />
+                                {new Date(cert.date).toLocaleString('default', { year: 'numeric', month: 'long', day: 'numeric' })} </>) : (<PublicIcon fontSize="small" sx={{ marginRight: 0.5 }} />)
+                            }
+                          </Typography>
+                        </Box>
+                      </Box>
+                    }
+                    sx={{ paddingBottom: 1 }}
+                  />
+                  <CardContent>
+                    <Box sx={{ display: 'flex', gap: 0.4, flexWrap: 'wrap' }}>
+                      {cert.skill.map((skill, index) => (
+                        <Breadcrumbs aria-label="breadcrumb" key={index}>
+                          <StyledBreadcrumb
+                            component="div"
+                            href="#"
+                            label={skill}
+                            icon={<CodeIcon fontSize="small" sx={{ fontSize: 12 }} />}
+                            sx={{ fontSize: 10 }}
+                          />
+                        </Breadcrumbs>
+                      ))}
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))
+          ) : (
+            <Typography variant="body2" color="text.secondary">
+              No certification data available.
+            </Typography>
+          )}
+        </Grid>
+
+
+      </Box>
+
+      <Box
+        id="education"
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+          minHeight: '25vh',
+          background: '#fdfefe',
+          padding: '30px',
+        }}
+      >
+        <Typography variant="h4" gutterBottom sx={{ mb: 2 }}>
+          Achievements
+        </Typography>
+        <Grid container spacing={2} justifyContent="center" sx={{ mt: 4 }}>
+          {achievementsData.length > 0 ? (
+            achievementsData.reverse(),
+            achievementsData.map((achievement, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Card
+                  key={index}
+                  sx={{
+                    transition: 'box-shadow 0.3s',
+                    '&:hover': {
+                      boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+                    },
+                    padding: 2,
+                  }}
+                >
+                  <CardHeader
+                    title={
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Typography sx={{ fontSize: 15, color: '#5d6d7e', fontWeight: 'bold' }}>
+                          {achievement.achievements}
+                        </Typography>
+                        {achievement.type === 'edu' ? (
+                          <SchoolIcon sx={{ fontSize: 14, marginLeft: 1, color: '#f7dc6f' }} />
+                        ) : (
+                          <WorkIcon sx={{ fontSize: 14, marginLeft: 1, color: '#16a085' }} />
+                        )}
+                      </Box>
+                    }
+                  />
+                  <CardContent>
+                    <Typography color="#5d6d7e" sx={{ fontSize: 10, fontWeight: 'bold' }}>
+                      {achievement.year}
+                    </Typography>
+                    <Typography sx={{ color: '#5d6d7e', fontSize: 10 }}>
+                      {achievement.org}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))
+          ) : (
+            <Typography variant="body2" color="text.secondary">
+              No certification data available.
+            </Typography>
+          )}
+        </Grid>
       </Box>
     </ThemeProvider>
   );
