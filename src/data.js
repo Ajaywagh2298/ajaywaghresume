@@ -44,6 +44,7 @@ import p13 from './pages/data/images/p13.jpeg';
 import p14 from './pages/data/images/p14.jpeg';
 import p15 from './pages/data/images/p15.jpeg';
 import p16 from './pages/data/images/p16.jpeg';
+import p17 from './pages/data/images/p17.png';
 
 const userData = {
   name: "Ajay Rajendra Wagh",
@@ -276,6 +277,9 @@ let imagesList = [{
   title : 'Title ..',
   url : p5
 },{
+  title : 'Title ..',
+  url : p17
+} ,{
   title : 'Title ..',
   url : p6
 },{
