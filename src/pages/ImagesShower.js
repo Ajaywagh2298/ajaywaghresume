@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import { Grid, Card, CardMedia, Modal, Box, IconButton, Typography } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import {
+  Grid, Card, CardMedia, Modal, Box, IconButton, Typography, Snackbar, Alert, Dialog, Button, DialogContent
+} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { imagesList } from '../data';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 
 export default function ImageGallery() {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleOpen = (image) => {
     setSelectedImage(image);
@@ -17,8 +22,47 @@ export default function ImageGallery() {
     setSelectedImage(null);
   };
 
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
+  const handleRestrictedAction = (e) => {
+    e.preventDefault();
+    setSnackbarOpen(true);
+    setDialogOpen(true);
+  };
+
+  // Disable certain keyboard shortcuts
+  const handleKeyDown = (e) => {
+    if (
+      (e.ctrlKey && (e.key === 's' || e.key === 'p')) || // Ctrl+S, Ctrl+P
+      (e.metaKey && (e.key === 's' || e.key === 'p')) || // Cmd+S, Cmd+P (for Mac)
+      (e.key === 'PrintScreen') // Print Screen
+    ) {
+      handleRestrictedAction(e);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
-    <Box sx={{ padding: 2 }}>
+    <Box
+      sx={{ padding: 2 }}
+      onContextMenu={handleRestrictedAction} // Disable right-click for the entire component
+      onCopy={handleRestrictedAction} // Prevent copying
+      onCut={handleRestrictedAction} // Prevent cutting
+      onPaste={handleRestrictedAction} // Prevent pasting
+      onDragStart={handleRestrictedAction} // Prevent dragging
+    >
       <Typography variant="h4" align="center" sx={{ mb: 4, mt: 5 }}>
         Image Gallery
       </Typography>
@@ -37,6 +81,10 @@ export default function ImageGallery() {
                 boxShadow: 3,
                 overflow: 'hidden',
                 borderRadius: 2,
+                userSelect: 'none', // Disable text selection
+                '& img': {
+                  pointerEvents: 'none', // Disable dragging images
+                },
               }}
             >
               <CardMedia
@@ -64,6 +112,7 @@ export default function ImageGallery() {
             borderRadius: 2,
             outline: 'none',
           }}
+          onContextMenu={handleRestrictedAction} // Disable right-click in the modal
         >
           <IconButton
             onClick={handleClose}
@@ -80,11 +129,104 @@ export default function ImageGallery() {
                 height: 'auto',
                 borderRadius: '8px',
                 boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+                userSelect: 'none', // Disable text selection
               }}
             />
           )}
         </Box>
       </Modal>
+      <WarningDialog  open={dialogOpen}
+        onClose={handleDialogClose} />
+      {/* <Dialog
+       
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <Box
+          sx={{
+            padding: 4,
+            textAlign: 'center',
+            backgroundColor: '#f44336',
+            color: 'white',
+          }}
+        >
+          <Typography variant="h5" id="alert-dialog-title">
+            Warning!
+          </Typography>
+          <Typography variant="body1" id="alert-dialog-description" sx={{ mt: 2 }}>
+            This action is not allowed. Please respect the content's copyright and do not attempt to save, copy, or screenshot this page.
+          </Typography>
+          <IconButton
+            onClick={handleDialogClose}
+            sx={{ position: 'absolute', top: 8, right: 8, color: 'white' }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Box>
+      </Dialog> */}
     </Box>
+  );
+}
+
+
+function WarningDialog({ open, onClose }) {
+  return (
+    <Dialog
+      open={open}
+      onClose={onClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+      PaperProps={{
+        style: { borderRadius: 15, overflow: 'hidden' }
+      }}
+    >
+      <Box
+        sx={{
+          backgroundColor: '#f44336',
+          color: 'white',
+          display: 'flex',
+          alignItems: 'center',
+          padding: '16px',
+          position: 'relative',
+        }}
+      >
+        <WarningAmberIcon sx={{ fontSize: 50, marginRight: '16px' }} />
+        <Typography variant="h5" id="alert-dialog-title" sx={{ fontWeight: 'bold' }}>
+          Warning!
+        </Typography>
+        <IconButton
+          onClick={onClose}
+          sx={{ position: 'absolute', top: 8, right: 8, color: 'white' }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </Box>
+
+      <DialogContent sx={{ padding: '24px', textAlign: 'center' }}>
+        <Typography variant="body1" id="alert-dialog-description" sx={{ mb: 2 ,color : '#5d6d7e'}}>
+          This action is not allowed. Please respect the content's copyright and do not attempt to save, copy, or screenshot this page.
+        </Typography>
+        <Alert severity="error" sx={{ borderRadius: 8 }}>
+          Unauthorized actions are strictly prohibited!
+        </Alert>
+      </DialogContent>
+
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          paddingBottom: '16px',
+        }}
+      >
+        <Button
+          variant="contained"
+          color="error"
+          onClick={onClose}
+          sx={{ textTransform: 'none', fontWeight: 'bold', borderRadius: 5 }}
+        >
+          I Understand
+        </Button>
+      </Box>
+    </Dialog>
   );
 }

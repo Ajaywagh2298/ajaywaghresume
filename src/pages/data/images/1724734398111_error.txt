@@ -1,0 +1,3 @@
+Error: Cannot find module './XLSXWriter'
+Require stack:
+- C:\Recibotech\Project\footprints-server\bgservices\report\report-processor\stock_transaction_logs_report_processor.js

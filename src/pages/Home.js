@@ -13,7 +13,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import WorkIcon from '@mui/icons-material/Work';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-
+import Scene from './Scene';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LoadingPopup from './LoadingPopup';
 import { userData, experienceData, educationData, skillsData, certificationsData, achievementsData, imagesList } from '../data';
@@ -92,7 +92,7 @@ function Home() {
           <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} lg={6} textAlign="center">
               <Avatar
-                alt="Jane Doe"
+                alt="Ajay Wagh"
                 src={userData.image}
                 sx={{
                   width: 400,
@@ -100,7 +100,8 @@ function Home() {
                   mx: 'auto',
                   borderRadius: '50%',
                 }}
-              />
+              /> 
+               {/* <Scene /> */}
               <Typography variant="h4" component="h2" fontWeight="bold" mt={2}>
                 {userData.name}
               </Typography>
