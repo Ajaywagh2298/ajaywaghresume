@@ -65,7 +65,7 @@ const experienceData = [
     companyName: "Eazy ERP Technologies Pvt Ltd",
     companyLogo: eazy,
     startDate: '2023-11-01',
-    endDate: 'Present',
+    endDate: '2025-09-07',
     skill: 'Node Js, Mysql, AWS, Polymer JS, GraphQL, Sequelize, ag-grid',
     details: "Collaborated with management and development partners on software design and project progress. Developed scalable, modular, and API-centric infrastructures. Analyzed customer needs, assessed vendor costs, and designed technology solutions that met or exceeded performance expectations."
   }, {
@@ -73,7 +73,7 @@ const experienceData = [
     companyName: "Recibo Technologies pvt ltd",
     companyLogo: recibo,
     startDate: '2022-09-12',
-    endDate: 'Present',
+    endDate: '2025-09-07',
     skill: 'Node Js, Mysql, AWS, Polymer JS, GraphQL, Sequelize, ag-grid',
     details: "Collaborated with management and development partners on software design and project progress. Developed scalable, modular, and API-centric infrastructures. Analyzed customer needs, assessed vendor costs, and designed technology solutions that met or exceeded performance expectations."
   }, {
