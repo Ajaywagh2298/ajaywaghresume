@@ -7,7 +7,7 @@ import Projects from './pages/Projects';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
-import Study from './pages/study';
+import Study from './pages/Study';
 import './App.css';
 import ExperienceList from './pages/Experience';
 import Footer from './components/footer';
