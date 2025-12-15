@@ -7,6 +7,7 @@ import Projects from './pages/Projects';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import Study from './pages/study';
 import './App.css';
 import ExperienceList from './pages/Experience';
 import Footer from './components/footer';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/exp" element={<ExperienceList />} />
           <Route path="/images" element={<ImageGallery />} />
+          <Route path="/study" element={<Study />} />
         </Routes>
         <Footer />
       </Router>
