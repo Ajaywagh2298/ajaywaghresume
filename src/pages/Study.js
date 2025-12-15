@@ -9044,4 +9044,4 @@ const Study = () => {
   );
 };
 
-export default Admin;
+export default Study;
