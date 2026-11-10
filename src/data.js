@@ -57,7 +57,7 @@ import p17 from './pages/data/images/p17.png';
 const userData = {
   name: "Ajay Rajendra Wagh",
   position: "Full Stack Developer",
-  location: "Pune, Maharashtra, India",
+  location: "Mumbai, Maharashtra, India",
   locationUrl: "https://www.google.com/maps/place/20%C2%B015'40.8%22N+74%C2%B026'22.2%22E/@20.261324,74.43951,17z/data=!3m1!4b1!4m4!3m3!8m2!3d20.261324!4d74.43951?entry=ttu",
   email: "ajaywagh2298@gmail.com",
   phone: "+91 - 8605473682",
