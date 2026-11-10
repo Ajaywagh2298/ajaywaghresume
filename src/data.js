@@ -1,10 +1,11 @@
-import mh from './pages/data/boardlogo.svg';
+import mh from './pages/data/mh.png';
 import user from './pages/data/main.jpg';
 import konfhub from './pages/data/konfhub.png'
 import recibo from './pages/data/Recibo-logo-2.png'
 import eazy from './pages/data/eazyerp-20240729120010.png'
 import vit from './pages/data/vit.png';
 import pcmcs from './pages/data/pcmcs.webp';
+import railway from './pages/data/railways.png';
 
 
 import nodejs from './pages/data/Skill/nodejs.svg';
@@ -26,8 +27,14 @@ import css from './pages/data/Skill/css.svg'
 import udemy from './pages/data/Skill/udemy.png';
 import forage from './pages/data/Skill/theforage_logo.jpeg'
 import csi from './pages/data/Skill/csi.png'
+import llm from './pages/data/Skill/brain.png'
+import ollama from './pages/data/Skill/ollama.png'
 
 import fullStack from './pages/data/Skill/AjayRajendraWaghMarch2024.pdf'
+
+import m1 from './pages/data/music/m1.mp3';
+import m2 from './pages/data/music/m2.mp3';
+import m3 from './pages/data/music/m3.mp3';
 
 import p1 from './pages/data/images/p1.jpeg';
 import p2 from './pages/data/images/p2.jpeg';
@@ -54,13 +61,19 @@ const userData = {
   locationUrl: "https://www.google.com/maps/place/20%C2%B015'40.8%22N+74%C2%B026'22.2%22E/@20.261324,74.43951,17z/data=!3m1!4b1!4m4!3m3!8m2!3d20.261324!4d74.43951?entry=ttu",
   email: "ajaywagh2298@gmail.com",
   phone: "+91 - 8605473682",
-  github: "https://github.com/Ajaywagh2298",
-  linkedin: "https://www.linkedin.com/in/ajaywagh2298/",
-  instagram: "https://www.instagram.com/ajay_wagh_2298?utm_source=qr&igsh=MXI1cnd0enBmMDBzYQ==",
   image: user
 };
 
 const experienceData = [
+   {
+    designation: "Junior Engineer ( Information Technology )",
+    companyName: "Information Technology Cell, Indian Railway ( Central Railway HQ), Government of India",
+    companyLogo: railway,
+    startDate: '2026-03-23',
+    endDate: 'present',
+    skill: 'Node Js, React Js,Ollama, .Net, Postgres, Mongo DB, Sequelize, ag-grid',
+    details: "Collaborated with management and development partners on software design and project progress. Developed scalable, modular, and API-centric infrastructures. Analyzed customer needs, assessed vendor costs, and designed technology solutions that met or exceeded performance expectations."
+  },
   {
     designation: "Software Engineer",
     companyName: "Eazy ERP Technologies Pvt Ltd",
@@ -111,14 +124,14 @@ const educationData = [
     period: "2014 - 2015",
     details: "Graduated with honors, focusing on software development...",
     total: 1,
-    //imageURL: mh
+    imageURL: mh
   }, {
     degree: "Secondary Certificate ( X )",
     institution: "Maharashtra State Board",
     period: "2012 - 2013",
     details: "Graduated with honors, focusing on software development...",
     total: 1,
-    //imageURL: mh
+    imageURL: mh
   }
 ];
 
@@ -191,6 +204,21 @@ const skillsData = [
     name: "React Native",
     level: 1,
     icon: reactIcon,
+  },
+  {
+    name: ".Net",
+    level: 1,
+    icon: reactIcon,
+  },
+  {
+    name: "Ollama",
+    level: 1,
+    icon: ollama,
+  },
+  {
+    name: "LLM / SLM Model",
+    level: 1,
+    icon: llm,
   }
 ];
 
@@ -230,7 +258,11 @@ const projectsData = [
     githubLink: "https://github.com/Ajaywagh2298/Nirbhaya",
     details: [`Developed an application aimed at enhancing the safety of commuters, especially females, by providing a platform to raise alarms that can be tracked and managed by security agencies.`],
     pdf: "",
-    techStack : ['PHP', 'Bootstrap', 'Ajax', 'MySQL', 'Google Map API', 'Local Text']
+    techStack : ['PHP', 'Bootstrap', 'Ajax', 'MySQL', 'Google Map API', 'Local Text'],
+    // Optional fields: category, image (imported screenshot), liveLink, problem, approach, highlights: []
+    category: "Web application",
+    problem: "Commuters need a way to raise safety alerts that security agencies can track and manage.",
+    approach: "A PHP and MySQL application using Bootstrap for the interface, Ajax for requests, and the Google Maps API for location context."
   }
 ];
 
@@ -254,6 +286,11 @@ let achievementsData = [{
   achievements : 'Excellence Award for Outstanding Performance ( 2023 - 24 )',
   year : 'April 2024',
   org : 'Eazy ERP Solution Pvt Ltd',
+  type : 'pro'
+},{
+  achievements : 'Certificate Of Appreciation',
+  year : 'July 2026',
+  org : 'NeGD , Ministry of Electronics and Information Technology ( MeitY )',
   type : 'pro'
 }]
 
@@ -325,27 +362,29 @@ let imagesList = [{
 const socialLinks = [
   {
     name: "GitHub",
-    url: "",
+    url: "https://github.com/Ajaywagh2298",
     icon: "github"
   },
   {
     name: "LinkedIn",
-    url: "",
+    url: "https://www.linkedin.com/in/ajaywagh2298/",
     icon: "linkedin"
   },
   {
     name: "Instagram",
-    url: "",
+    url: "https://www.instagram.com/ajay_wagh_2298?utm_source=qr&igsh=MXI1cnd0enBmMDBzYQ==",
     icon: "instagram"
+  },
+  {
+    name : "Facebook",
+    url : "https://www.facebook.com/ajay.wagh.562679",
+    icon : "facebook"
+  },{
+    name : "Pratilipi Blog",
+    url : "https://english.pratilipi.com/user/ajay-wagh-58906v8114",
+    icon : "pratilipi"
   }
 ]
-
-const contactInfo = [
-  {
-    type: "Email",
-    value: "",
-    icon: "envelope"
-  },]
 
   const hobbies = [{
     name: "Reading",
@@ -358,6 +397,51 @@ const contactInfo = [
     icon: "camera"
   }]
 
+/* ------------------------------------------------------------------
+ * Optional sections for the Creative Sanctuary design.
+ * Every list can stay empty: its page shows a calm "coming soon" state.
+ * How to add entries: docs/CONTENT.md
+ * ------------------------------------------------------------------ */
+
+const siteSettings = {
+  tagline: "Building with logic. Writing with imagination. Exploring beyond boundaries.",
+  experienceYears: "4+",
+  bio: [
+    "I am a full-stack developer with over 4 years of professional experience, working across interfaces, Node.js services, databases and cloud infrastructure.",
+    "Alongside software development, I enjoy writing poetry and stories, listening to music, and travelling."
+  ],
+  writingProfile: "Pratilipi Blog" // name of the socialLinks entry used for "Read more of my writing"
+};
+
+const identityThemes = [
+  { key: "developer", title: "Developer", text: "I build software and solve technical problems.", path: "/projects" },
+  { key: "writer", title: "Writer", text: "I express thoughts through poetry and storytelling.", path: "/writing" },
+  { key: "music", title: "Music Lover", text: "Music is part of my personal world.", path: "/music" },
+  { key: "explorer", title: "Explorer", text: "I enjoy travelling and discovering new places.", path: "/travel" }
+];
+
+// { title, date: 'YYYY-MM-DD', excerpt, body: 'stanzas separated by blank lines', tags: [], language, link }
+const poetry = [];
+
+// { title, date: 'YYYY-MM-DD', excerpt, body: 'paragraphs separated by blank lines', tags: [], link }
+const stories = [];
+
+// { place, country, date: 'YYYY-MM-DD', story, images: [imported image], highlights: [] }
+const travel = [];
+
+const music = {
+  genres: [],    // ['Indie', 'Classical']
+  artists: [],   // ['Artist name']
+  playlists: [], // { title, description, url, embedUrl } — embedUrl: Spotify "Embed" link, never autoplays
+  notes: [],     // short personal notes about music
+  // Played by the record player on the home page. Only use music you have the right to share.
+  tracks: [
+    { title: "United", artist: "ASHUTOSH", src: m1 },
+    { title: "Death Valley Waltz", artist: "Lucas Gonze", src: m2 },
+    { title: "Track 3", artist: "", src: m3 } // m3.mp3 has no title tag — add its title and artist here
+  ]
+};
+
 export {
   userData,
   experienceData,
@@ -369,6 +453,11 @@ export {
   achievementsData,
   imagesList,
   socialLinks,
-  contactInfo,
-  hobbies
+  hobbies,
+  siteSettings,
+  identityThemes,
+  poetry,
+  stories,
+  travel,
+  music
 };
