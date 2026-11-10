@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import './Study.css'; // We'll create this CSS file
 
 const Study = () => {
@@ -10,7 +10,7 @@ const Study = () => {
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [currentAbbrQuestionType, setCurrentAbbrQuestionType] = useState('');
+
   const [writtenAnswer, setWrittenAnswer] = useState('');
   
   // Sentence exercise state

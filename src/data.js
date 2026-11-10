@@ -1,10 +1,11 @@
-import user from './components/user.jpg';
+import mh from './pages/data/boardlogo.svg';
+import user from './pages/data/main.jpg';
 import konfhub from './pages/data/konfhub.png'
 import recibo from './pages/data/Recibo-logo-2.png'
 import eazy from './pages/data/eazyerp-20240729120010.png'
 import vit from './pages/data/vit.png';
 import pcmcs from './pages/data/pcmcs.webp';
-import mh from './pages/data/boardlogo.svg'
+
 
 import nodejs from './pages/data/Skill/nodejs.svg';
 import reactIcon from './pages/data/Skill/react.svg';
@@ -104,21 +105,21 @@ const educationData = [
     total: 3,
     imageURL: pcmcs
   }
-  // , {
-  //   degree: "Higher Secondary Certificate ( XII )",
-  //   institution: "Maharashtra State Board",
-  //   period: "2014 - 2015",
-  //   details: "Graduated with honors, focusing on software development...",
-  //   total: 1,
-  //   imageURL: mh
-  // }, {
-  //   degree: "Secondary Certificate ( X )",
-  //   institution: "Maharashtra State Board",
-  //   period: "2012 - 2013",
-  //   details: "Graduated with honors, focusing on software development...",
-  //   total: 1,
-  //   imageURL: mh
-  // }
+  , {
+    degree: "Higher Secondary Certificate ( XII )",
+    institution: "Maharashtra State Board",
+    period: "2014 - 2015",
+    details: "Graduated with honors, focusing on software development...",
+    total: 1,
+    //imageURL: mh
+  }, {
+    degree: "Secondary Certificate ( X )",
+    institution: "Maharashtra State Board",
+    period: "2012 - 2013",
+    details: "Graduated with honors, focusing on software development...",
+    total: 1,
+    //imageURL: mh
+  }
 ];
 
 const skillsData = [
@@ -134,7 +135,7 @@ const skillsData = [
     name: "JavaScript",
     level: 5,
     icon: js,
-  }, , {
+  }, {
     name: "HTML",
     level: 5,
     icon: html,
@@ -320,6 +321,43 @@ let imagesList = [{
   url : p2
 }]
 
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    url: "",
+    icon: "github"
+  },
+  {
+    name: "LinkedIn",
+    url: "",
+    icon: "linkedin"
+  },
+  {
+    name: "Instagram",
+    url: "",
+    icon: "instagram"
+  }
+]
+
+const contactInfo = [
+  {
+    type: "Email",
+    value: "",
+    icon: "envelope"
+  },]
+
+  const hobbies = [{
+    name: "Reading",
+    icon: "book"
+  }, {
+    name: "Traveling",
+    icon: "plane"
+  }, {
+    name: "Photography",
+    icon: "camera"
+  }]
+
 export {
   userData,
   experienceData,
@@ -329,5 +367,8 @@ export {
   projectsData,
   resumeList,
   achievementsData,
-  imagesList
+  imagesList,
+  socialLinks,
+  contactInfo,
+  hobbies
 };
